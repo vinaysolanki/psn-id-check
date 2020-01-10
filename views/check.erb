@@ -5,6 +5,7 @@
 
 <input type="text" name="name">
 <button id="check">Check</button>
+<h2 id="response"></h2>
 
 <script type="text/javascript">
   const API_URL = "https://accounts.api.playstation.com/api/v1/accounts/onlineIds"
@@ -18,7 +19,8 @@
         url: API_URL,
         data: data,
       }).done(function (data) {
-        alert("Data Loaded: " + data)
+        alert("Data Loaded: " + data);
+        $("h2#response").val("Hahaha");
       })
     })
   })
