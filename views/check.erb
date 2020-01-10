@@ -16,6 +16,9 @@
       let data = JSON.stringify({ "onlineId": name, "reserveIfAvailable":false })
       $.ajax({
         type: "POST",
+        headers: {  'Access-Control-Allow-Origin': 'https://psn' },
+        contentType: "application/json",
+        dataType: "json",
         url: API_URL,
         data: data,
       }).done(function (data) {
