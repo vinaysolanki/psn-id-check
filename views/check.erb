@@ -1,0 +1,25 @@
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<input type="text" name="name">
+<button id="check">Check</button>
+
+<script type="text/javascript">
+  const API_URL = "https://accounts.api.playstation.com/api/v1/accounts/onlineIds"
+
+  $(document).ready(function () {
+    $("button#check").click(function () {
+      let name = $("input[name=name]").val();
+      let data = JSON.stringify({ "onlineId": name, "reserveIfAvailable":false })
+      $.ajax({
+        type: "POST",
+        url: API_URL,
+        data: data,
+      }).done(function (data) {
+        alert("Data Loaded: " + data)
+      })
+    })
+  })
+</script>
