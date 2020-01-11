@@ -15,7 +15,7 @@
     <div class="md:flex md:items-center mb-6 justify-center">
       <button id="check" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-2xl font-bold py-4 px-12 rounded">Check</button>
     </div>
-    <div id=response_box class="md:flex md:items-center mb-6 justify-center border-solid bg-gray-200 py-4 px-4">
+    <div id=response_box class="md:flex md:items-center mb-6 justify-center border-solid bg-gray-200 py-4 px-4" style="display: none;">
       <h2 id="response" style="text-transform: capitalize;" class="text-3xl font-semibold"></h2>
     </div>
   </div>
@@ -23,8 +23,8 @@
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $("#response_box").hide()
     $("button#check").click(function () {
+      $("#response_box").hide()
       let name = $('input[name="name"]').val();
       let url = "/check/" + name;
       $.get({
