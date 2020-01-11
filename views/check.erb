@@ -2,28 +2,49 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
-<input type="text" name="name">
-<button id="check">Check</button>
-<h2 id="response"></h2>
+<div class="flex justify-center">
+  <div class="w-full max-w-md absolute">
+    <div class="md:flex md:items-center mb-6 justify-center">
+      <h1 class="text-4xl font-bold text-indigo-900">Is this PSN ID Available?</h1>
+    </div>
+    <div class="md:flex md:items-center mb-6 justify-center">
+      <input type="text" name="name" class="shadow appearance-none border rounded w-full py-4 px-4 text-gray-700 text-2xl leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter PSN ID">
+    </div>
+    <div class="md:flex md:items-center mb-6 justify-center">
+      <button id="check" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-2xl font-bold py-4 px-12 rounded">Check</button>
+    </div>
+    <div id=response_box class="md:flex md:items-center mb-6 justify-center border-solid bg-gray-200 py-4 px-4">
+      <h2 id="response" style="text-transform: capitalize;" class="text-3xl font-semibold"></h2>
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function () {
+    $("#response_box").hide()
     $("button#check").click(function () {
       let name = $('input[name="name"]').val();
       let url = "/check/" + name;
       $.get({
         url: url,
       }).done(function (data) {
+        $("#response_box").show();
         let resp = JSON.parse(data)
         if(resp.status == 201) {
-          $("h2#response").html("ID is Available");
+          $("h2#response").html("ID is Available").css("color", "#48bb78");
         } else {
           let body = JSON.parse(resp.body)
           let message = body[0]["validationErrors"][0]["message"]
           if(message) {
             let stripped_msg = message.substring(0, message.indexOf("existingReservationId"))
-            $("h2#response").html(stripped_msg);
+            let account_exists = "Account with this online id already exists"
+            if(stripped_msg.indexOf(account_exists) == 0) {
+              $("h2#response").html("ID is Unavailable").css("color", "#e53e3e");
+            } else {
+              $("h2#response").html(message).css("color", "#e53e3e");
+            }
           }
         }
       })
