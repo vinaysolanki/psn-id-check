@@ -8,22 +8,24 @@
 <h2 id="response"></h2>
 
 <script type="text/javascript">
-  const API_URL = "https://accounts.api.playstation.com/api/v1/accounts/onlineIds"
-
   $(document).ready(function () {
     $("button#check").click(function () {
-      let name = $("input[name=name]").val();
-      let data = JSON.stringify({ "onlineId": name, "reserveIfAvailable":false })
-      $.ajax({
-        type: "POST",
-        headers: {  'Access-Control-Allow-Origin': 'https://psn' },
-        contentType: "application/json",
-        dataType: "json",
-        url: API_URL,
-        data: data,
+      let name = $('input[name="name"]').val();
+      let url = "/check/" + name;
+      $.get({
+        url: url,
       }).done(function (data) {
-        alert("Data Loaded: " + data);
-        $("h2#response").val("Hahaha");
+        let resp = JSON.parse(data)
+        if(resp.status == 201) {
+          $("h2#response").html("ID is Available");
+        } else {
+          let body = JSON.parse(resp.body)
+          let message = body[0]["validationErrors"][0]["message"]
+          if(message) {
+            let stripped_msg = message.substring(0, message.indexOf("existingReservationId"))
+            $("h2#response").html(stripped_msg);
+          }
+        }
       })
     })
   })
