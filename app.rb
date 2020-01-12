@@ -2,7 +2,7 @@ require 'sinatra'
 require 'httparty'
 
 API_URL = "https://accounts.api.playstation.com/api/v1/accounts/onlineIds"
-HOST_URL = "accounts.api.playstation.com"
+HOST_URL = "psn-id-check.herokuapp.com"
 
 get '/' do
   erb :check
