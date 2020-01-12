@@ -12,6 +12,5 @@ get '/check/:name' do
     resp = HTTParty.post(API_URL, 
       body: { onlineId: params['name'], reserveIfAvailable: false }.to_json,
       headers: { 'Content-Type' => 'application/json', 'Host' => HOST_URL })
-    logger.info resp
     return { body: resp.body, status: resp.code }.to_json
 end
