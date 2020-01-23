@@ -1,26 +1,30 @@
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
-<div class="flex justify-center">
-  <div class="w-full max-w-md">
-    <div class="flex items-center mb-6 justify-center">
-      <h1 class="text-4xl font-bold text-indigo-900">Is this PSN ID Available?</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <title></title>
+</head>
+<body class="flex flex-col items-center relative h-screen">
+  <header class="bg-purple-500 w-full flex justify-center items-center">
+    <img src="id.svg" class="h-8 fill-current" />
+    <h2 class="text-2xl text-gray-900 p-4 text-center font-bold">PSN ID Check</h2>
+  </header>
+  <main class="flex flex-col h-screen justify-center items-center">
+    <h1 class="text-4xl font-bold text-indigo-900 p-4">Is this PSN ID Available?</h1>
+    <input type="text" name="name" class="shadow appearance-none border rounded w-full py-4 px-4 text-gray-700 text-2xl leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter PSN ID">
+    <button id="check" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-2xl font-bold py-4 px-10 rounded-lg my-8">Check</button>
+    <div id=response_box class="flex items-center mb-6 justify-center border-solid bg-gray-200 py-4 px-10" style="display: none;">
+      <h2 id="response" style="text-transform: capitalize;" class="text-2xl font-semibold"></h2>
     </div>
-    <div class="flex items-center mb-6 justify-center">
-      <input type="text" name="name" class="shadow appearance-none border rounded w-full py-4 px-4 text-gray-700 text-2xl leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter PSN ID">
-    </div>
-    <div class="flex items-center mb-6 justify-center">
-      <button id="check" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-2xl font-bold py-4 px-12 rounded">Check</button>
-    </div>
-    <div id=response_box class="flex items-center mb-6 justify-center border-solid bg-gray-200 py-4 px-4" style="display: none;">
-      <h2 id="response" style="text-transform: capitalize;" class="text-3xl font-semibold"></h2>
-    </div>
-  </div>
-</div>
-
+  </main>
+  <footer class="bg-purple-500 w-full absolute bottom-0 text-sm text-purple-100 px-4 py-2 text-right">
+    Made by <a href="https://github.com/vinaysolanki" class="underline">Vinay Solanki</a>
+  </footer>
+</body>
 <script type="text/javascript">
   $(document).ready(function () {
     $("button#check").click(function () {
@@ -51,3 +55,4 @@
     })
   })
 </script>
+</html>
