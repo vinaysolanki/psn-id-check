@@ -4,7 +4,8 @@
 guard 'livereload' do
   watch(%r{views/.+\.(erb|haml|slim)$})
   watch(%r{images/.+\.(png|svg)$})
-  # watch(%r{app/helpers/.+\.rb})
+  watch(%r{/app/})
+  watch('app.rb')
   # watch(%r{public/.+\.(css|js|html)})
   # watch(%r{config/locales/.+\.yml})
   # # Rails Assets Pipeline

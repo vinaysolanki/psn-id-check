@@ -61,6 +61,7 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
+    stripe (5.17.0)
     thor (0.19.4)
     tilt (2.0.10)
 
@@ -71,8 +72,10 @@ DEPENDENCIES
   guard
   guard-livereload
   httparty
+  pry
   rack-livereload
   sinatra
+  stripe
 
 BUNDLED WITH
    1.17.3

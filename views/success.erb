@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <title></title>
+</head>
+<body class="flex flex-col items-center p-8">
+  <h3 class="text-2xl text-gray-800 font-bold">Wait! We have a Special Offer For you!</h3>
+  <h2 class="text-4xl text-indigo-700 font-bold py-2">Add 2 More Masks To Your Order for Only $14.99</h2>
+  <div class="p-10 flex flex-col items-center">
+    <img src="https://images-na.ssl-images-amazon.com/images/I/61Ii0cARLSL._AC_SY450_.jpg"
+      class="w-2/3">
+  </div>
+  <form action="/upsell" method="POST">
+    <input type="hidden" name="session_id" value="<%= session_id %>">
+    <button type="submit" id="check" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white text-2xl px-10 py-4 my-8 font-bold rounded-lg">Add to your Order!</button>
+  </form>
+  <a href="/thank_you" class="underline text-lg">No, thank you!</a>
+</body>
+</html>
+
